@@ -15,7 +15,8 @@ class UrlsController < ApplicationController
   # GET /urls/1.json
   def show
     @url = Url.find(params[:id])
-    max_value = @url.max_click_nb
+    max_value = (@url.max_click_nb == 0) ? 1 : @url.max_click_nb
+    
     @clicks_chart = Gchart.line(  :size => '550x300', 
               :title => "",
               :bg => {:color => 'AEE9F2'},

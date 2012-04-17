@@ -16,6 +16,6 @@ class Url < ActiveRecord::Base
   end
 
   def max_click_nb
-    self.clicks_in_previous_week.split(",").max 
+    self.clicks_in_previous_week.split(",").max.to_i 
   end
 end
