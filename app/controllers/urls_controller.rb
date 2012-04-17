@@ -45,7 +45,7 @@ class UrlsController < ApplicationController
               new_url = @url.minimize(8)
             end
     
-            @url.url_out = "http://babyurl.com/#{new_url}"
+            @url.url_out = "babyurl.heroku.com/#{new_url}"
             @url.out = new_url
             @url.clicks_in_previous_week = "0,0,0,0,0,0,0"
             if @url.save      
