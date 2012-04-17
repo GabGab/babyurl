@@ -30,20 +30,8 @@ class UrlsController < ApplicationController
     end
   end
 
-  # GET /urls/new
-  # GET /urls/new.json
-  def new
-    @url = Url.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @url }
-    end
-  end
-
-  # GET /urls/1/edit
-  def edit
-    @url = Url.find(params[:id])
+  def error
+    redirect_to "error"
   end
 
   # POST /urls
@@ -68,7 +56,7 @@ class UrlsController < ApplicationController
             end
           end
         else
-          render :nothing => true, :status => 500
+          render 'urls/error'
         end  
   end
 
@@ -116,15 +104,4 @@ class UrlsController < ApplicationController
     redirect_to url.url_in  
   end
 
-  def task_save_current_day_clicks  
-    urls = Url.all
-    urls.each do |url|
-      week_click_array = url.clicks_in_previous_week.split(",")
-      week_click_array = week_click_array.reverse
-      week_click_array.push(0)
-      week_click_array.delete_at(0)
-      url.clicks_in_previous_week = week_click_array.reverse.join(",")
-      url.save
-    end
-  end
 end
