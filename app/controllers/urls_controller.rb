@@ -2,6 +2,7 @@ class UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
 
+#Not used
   def index
     @urls = Url.all
 
@@ -30,10 +31,6 @@ class UrlsController < ApplicationController
     end
   end
 
-  def error
-    redirect_to "error"
-  end
-
   # POST /urls
   # POST /urls.json
   def create
@@ -58,22 +55,6 @@ class UrlsController < ApplicationController
         else
           render 'urls/error'
         end  
-  end
-
-  # PUT /urls/1
-  # PUT /urls/1.json
-  def update
-    @url = Url.find(params[:id])
-
-    respond_to do |format|
-      if @url.update_attributes(params[:url])
-        format.html { redirect_to @url, notice: 'Url was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @url.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /urls/1
