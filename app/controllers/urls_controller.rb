@@ -47,7 +47,9 @@ class UrlsController < ApplicationController
     
             @url.url_out = "babyurl.heroku.com/#{new_url}"
             @url.out = new_url
-            @url.clicks_in_previous_week = "0,0,0,0,0,0,0"
+            @url.clicks_in_previous_week = "1,0,0,0,0,0,0"
+            @url.click_number = 1
+            @url.daily_click_number = 1
             if @url.save      
               redirect_to :action => "show", :id => @url.id 
             end
